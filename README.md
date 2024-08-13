@@ -63,3 +63,38 @@ ChatBot Move Assignment Operator
 ChatBot Destructor
 ChatBot Destructor 
 ```
+
+## Project Rubric  
+### 1. Quality of Code
+#### 1.1 Is the code functional?
+Yes, it is.
+### 2. Task 1: Exclusive Ownership 1
+#### 2.1 `_chatLogic` is an exclusive resource of `ChatbotPanelDialog`
+Yes, it is.
+### 3. Task 2: The Rule of Five
+#### 3.1 Class design meets the Rule of Five guidelines.
+Yes, it is.
+### 4. Task 3: Exclusive Ownership 2
+#### 4.1 The `GraphNodes` in the vector `_nodes` are exclusively owned by the class `ChatLogic`.
+Yes, it is.
+#### 4.2 `GraphNode` ownership is not transferred when passing instances.
+Yes, it is.
+### 5. Task 4: Moving Smart Pointers
+#### 5.1 `GraphNodes` exclusively own the outgoing `GraphEdges` and hold non-owning references to incoming `GraphEdges`
+Yes, it is.
+#### 5.2 Move semantics are used when transferring ownership from class `ChatLogic` into instances of `GraphNode`.
+Yes, it is.
+### 6. Task 5: Moving the ChatBot
+#### 6.1 Move semantics are used correctly with `ChatBot`.
+Yes, it is.
+#### 6.2 `ChatLogic` has no ownership relation to the `ChatBot` instance.
+Yes, it is.
+#### 6.3 The `Chatbot` prints output to indicate Rule of Five components.
+Yes, it is.
+
+## Photos
+### 1. Example
+#### 1.1 Pointers
+![pointer.png](photos/pointers.png)
+#### 1.2 Memory
+![memory.png](photos/memory.png)
