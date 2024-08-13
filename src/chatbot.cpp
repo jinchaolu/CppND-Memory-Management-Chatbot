@@ -52,6 +52,7 @@ ChatBot::ChatBot(const ChatBot &source) {
     this -> _currentNode = source._currentNode;
     this -> _rootNode = source._rootNode;
     this -> _chatLogic = source._chatLogic;
+    this -> _chatLogic -> SetChatbotHandle(this);
 }
 
 // Copy assignment constructor
@@ -71,6 +72,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
     this -> _currentNode = source._currentNode;
     this -> _rootNode = source._rootNode;
     this -> _chatLogic = source._chatLogic;
+    this -> _chatLogic -> SetChatbotHandle(this);
 
     return *this;
 }
@@ -81,13 +83,15 @@ ChatBot::ChatBot(ChatBot &&source) {
 
     // Free current memory to avoid memory leak
     if (this -> _image != nullptr) {
-        delete (this -> _image);
+        // delete (this -> _image);
+        this -> _image = nullptr;
     }
     
     this -> _image = source._image;
     this -> _currentNode = source._currentNode;
     this -> _rootNode = source._rootNode;
     this -> _chatLogic = source._chatLogic;
+    this -> _chatLogic -> SetChatbotHandle(this);
 
     source._image = nullptr;
     source._currentNode = nullptr;
@@ -112,6 +116,7 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     this -> _currentNode = source._currentNode;
     this -> _rootNode = source._rootNode;
     this -> _chatLogic = source._chatLogic;
+    this -> _chatLogic -> SetChatbotHandle(this);
 
     source._image = nullptr;
     source._currentNode = nullptr;
