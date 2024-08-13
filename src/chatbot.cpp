@@ -45,6 +45,82 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
+// Copy constructor
+ChatBot::ChatBot(const ChatBot &source) {
+    std::cout << "ChatBot Copy Constructor is called" << std::endl;
+    this -> _image = new wxBitmap(*(source._image));
+    this -> _currentNode = source._currentNode;
+    this -> _rootNode = source._rootNode;
+    this -> _chatLogic = source._chatLogic;
+}
+
+// Copy assignment constructor
+ChatBot &ChatBot::operator=(const ChatBot &source) {
+    std::cout << "ChatBot Copy Assignment Constructor is called" << std::endl;
+    
+    if (&source == this) {
+        return *this;
+    }
+
+    // Free current memory to avoid memory leak
+    if (this -> _image != nullptr) {
+        delete (this -> _image);
+    }
+
+    this -> _image = new wxBitmap(*(source._image));
+    this -> _currentNode = source._currentNode;
+    this -> _rootNode = source._rootNode;
+    this -> _chatLogic = source._chatLogic;
+
+    return *this;
+}
+
+// Move constructor
+ChatBot::ChatBot(ChatBot &&source) {
+    std::cout << "ChatBot Move Constructor is called" << std::endl;
+
+    // Free current memory to avoid memory leak
+    if (this -> _image != nullptr) {
+        delete (this -> _image);
+    }
+    
+    this -> _image = source._image;
+    this -> _currentNode = source._currentNode;
+    this -> _rootNode = source._rootNode;
+    this -> _chatLogic = source._chatLogic;
+
+    source._image = nullptr;
+    source._currentNode = nullptr;
+    source._rootNode = nullptr;
+    source._chatLogic = nullptr;
+}
+
+// Move assignment constructor
+ChatBot &ChatBot::operator=(ChatBot &&source) {
+    std::cout << "ChatBot Move Assignment Constructor is called" << std::endl;
+
+    if (&source == this) {
+        return *this;
+    }
+
+    // Free current memory to avoid memory leak
+    if (this -> _image != nullptr) {
+        delete (this -> _image);
+    }
+    
+    this -> _image = source._image;
+    this -> _currentNode = source._currentNode;
+    this -> _rootNode = source._rootNode;
+    this -> _chatLogic = source._chatLogic;
+
+    source._image = nullptr;
+    source._currentNode = nullptr;
+    source._rootNode = nullptr;
+    source._chatLogic = nullptr;
+
+    return *this;
+}
+
 ////
 //// EOF STUDENT CODE
 
